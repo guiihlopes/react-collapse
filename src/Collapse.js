@@ -86,7 +86,7 @@ export class Collapse extends React.PureComponent {
         // Still go to WAITING state if own isOpened was changed
         this.setState({currentState: WAITING});
       }
-    } else if (this.state.currentState === IDLING && (nextProps.isOpened || this.props.isOpened)) {
+    } else if (this.state.currentState === IDLING && (nextProps.isOpened !== this.props.isOpened)) {
       this.setState({currentState: WAITING});
     }
   }

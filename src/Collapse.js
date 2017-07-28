@@ -151,10 +151,10 @@ export class Collapse extends React.PureComponent {
 
   getWrapperStyle = height => {
     if (this.state.currentState === IDLING && this.state.to) {
-      const {fixedHeight} = this.props;
-      if (fixedHeight > -1) {
-        return {overflow: 'hidden', height: fixedHeight};
-      }
+      // const {fixedHeight} = this.props;
+      // if (fixedHeight > -1) {
+      //   return {overflow: 'hidden', height: fixedHeight};
+      // }
       return {height: 'auto'};
     }
 
@@ -174,14 +174,14 @@ export class Collapse extends React.PureComponent {
       defaultStyle: {height: this.state.to},
       style: {height: this.state.to}
     } : {
-      // Otherwise, animate
+        // Otherwise, animate
       defaultStyle: {height: this.state.from},
       style: {height: spring(this.state.to, {precision: SPRING_PRECISION, ...springConfig})}
     };
   };
 
 
-  renderContent = ({height}) => { // eslint-disable-line
+  renderContent = ({ height }) => { // eslint-disable-line
     const {
       isOpened: _isOpened,
       springConfig: _springConfig,

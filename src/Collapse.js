@@ -151,15 +151,20 @@ export class Collapse extends React.PureComponent {
 
   getWrapperStyle = height => {
     if (this.state.currentState === IDLING && this.state.to) {
-      // const {fixedHeight} = this.props;
-      // if (fixedHeight > -1) {
-      //   return {overflow: 'hidden', height: fixedHeight};
-      // }
+      const {fixedHeight} = this.props;
+
+      if (fixedHeight > -1) {
+        return {overflow: 'hidden', height: fixedHeight};
+      }
       return {height: 'auto'};
     }
 
     if (this.state.currentState === WAITING && !this.state.to) {
       return {overflow: 'hidden', height: 0};
+    }
+
+    if (this.state.currentState === WAITING && (this.state.from === this.state.to)) {
+      return {overflow: 'visible'};
     }
 
     return {overflow: 'hidden', height: Math.max(0, height)};
